@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "984351094102",
+    "project_id": "go-office-test-v0",
+    "storage_bucket": "go-office-test-v0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984351094102:android:ef40ca73ae8620ce9092f7",
+        "android_client_info": {
+          "package_name": "com.example.loginfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984351094102-ucdcpokgvl5ibcit07349u3qnnoa5n7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFaiTkBAtygGXlGbo5U_yQTG9ivcK2YSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984351094102-ucdcpokgvl5ibcit07349u3qnnoa5n7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

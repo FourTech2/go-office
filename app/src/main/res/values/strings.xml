@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GO OFFICE</string>
+    <string name="email">Email</string>
+    <string name="login_button">Acceder</string>
+    <string name="password">Contraseña</string>
+    <string name="register">Registrar</string>
+    <string name="provider">Proveedor</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="login_automatically">Iniciar sesión automaticamente</string>
+</resources>
