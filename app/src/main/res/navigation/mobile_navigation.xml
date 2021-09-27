@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.loginfirebase.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_spaces"
+        android:name="com.example.loginfirebase.ui.dashboard.SpacesFragment"
+        android:label="@string/title_spaces"
+        tools:layout="@layout/fragment_spaces" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.loginfirebase.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_check"
+        android:name="com.example.loginfirebase.ui.notifications.CheckFragment"
+        android:label="@string/title_check"
+        tools:layout="@layout/fragment_check" />
 </navigation>

@@ -8,8 +8,12 @@
     <string name="logout">Cerrar sesión</string>
     <string name="login_automatically">Iniciar sesión automaticamente</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_spaces">Espacios</string>
+    <string name="title_check">Check in/out</string>
     <string name="prefs_file">com.example.loginfirebase.PREFERENCE_FILE_KEY</string>
+    <string name="date_text">Fecha</string>
+    <string name="start_hour_text">Hora de entrada</string>
+    <string name="exit_hour_text">Hora de salida</string>
+    <string name="reserve_text">Reservar</string>
 </resources>

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 
@@ -14,6 +15,7 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var emailEditText : EditText
     private lateinit var passwordEditText: EditText
     private lateinit var logInCheckBox: CheckBox
+    private lateinit var authLayout: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,12 @@ class AuthActivity : AppCompatActivity() {
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
         logInCheckBox = findViewById(R.id.logInCheckBox)
+        authLayout = findViewById(R.id.authLayout)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        authLayout.visibility = View.VISIBLE
     }
 
     private fun session(){
@@ -34,9 +42,9 @@ class AuthActivity : AppCompatActivity() {
         val email = prefs.getString("email", null)
 
         if (email != null){
+            authLayout.visibility = View.INVISIBLE
             showHome(email)
         }
-
     }
 
     fun singUp(view: View){
