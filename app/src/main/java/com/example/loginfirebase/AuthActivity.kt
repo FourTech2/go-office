@@ -1,9 +1,11 @@
 package com.example.loginfirebase
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.CheckBox
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -11,13 +13,30 @@ import com.google.firebase.auth.FirebaseAuth
 class AuthActivity : AppCompatActivity() {
     private lateinit var emailEditText : EditText
     private lateinit var passwordEditText: EditText
+    private lateinit var logInCheckBox: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+        setUp()
+        session()
+    }
+
+    private fun setUp(){
         title = "Autenticación"
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
+        logInCheckBox = findViewById(R.id.logInCheckBox)
+    }
+
+    private fun session(){
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val email = prefs.getString("email", null)
+
+        if (email != null){
+            showHome(email)
+        }
+
     }
 
     fun singUp(view: View){
@@ -25,7 +44,7 @@ class AuthActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
                 .addOnCompleteListener{
                     if (it.isSuccessful){
-                        showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
+                        showHome(it.result?.user?.email ?: "")
                     } else {
                         showAlert("Error", it.exception?.message ?: "")
                     }
@@ -37,11 +56,14 @@ class AuthActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
                 .addOnCompleteListener{
                     if (it.isSuccessful){
-                        showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
+                        showHome(it.result?.user?.email ?: "")
                     } else {
                         showAlert("Error", "Se ha producido un error autenticando el usuario")
                     }
                 }
+        }
+        else{
+            showAlert("Cuidado", "Ingrese su correo y contraseña")
         }
     }
 
@@ -54,10 +76,10 @@ class AuthActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showHome(email: String, providerType: ProviderType){
+    private fun showHome(email: String){
         val homeIntent = Intent(this, HomeActivity::class.java).apply {
             putExtra("email", email)
-            putExtra("provider", providerType.name)
+            putExtra("autoLogIn", logInCheckBox.isChecked)
         }
         startActivity(homeIntent)
     }

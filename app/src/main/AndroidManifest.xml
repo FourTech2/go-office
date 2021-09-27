@@ -11,7 +11,8 @@
         android:theme="@style/Theme.LoginFirebase">
         <activity
             android:name=".HomeActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/title_activity_home" />
         <activity
             android:name=".AuthActivity"
             android:exported="true">

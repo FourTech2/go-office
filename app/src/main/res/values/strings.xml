@@ -7,4 +7,9 @@
     <string name="provider">Proveedor</string>
     <string name="logout">Cerrar sesión</string>
     <string name="login_automatically">Iniciar sesión automaticamente</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="prefs_file">com.example.loginfirebase.PREFERENCE_FILE_KEY</string>
 </resources>
