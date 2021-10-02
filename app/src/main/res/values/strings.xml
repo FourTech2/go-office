@@ -16,4 +16,5 @@
     <string name="start_hour_text">Hora de entrada</string>
     <string name="exit_hour_text">Hora de salida</string>
     <string name="reserve_text">Reservar</string>
+    <string name="reserve_description">Ingresa la fecha, hora de entrada y salida para reservar un espacio</string>
 </resources>

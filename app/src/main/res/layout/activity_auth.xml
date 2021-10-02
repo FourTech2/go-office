@@ -11,12 +11,6 @@
     android:orientation="vertical"
     tools:context=".AuthActivity">
 
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/email" />
-
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
@@ -29,12 +23,6 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="16dp" />
-
-    <TextView
-        android:id="@+id/passwordTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/password" />
 
     <EditText
         android:id="@+id/passwordEditText"

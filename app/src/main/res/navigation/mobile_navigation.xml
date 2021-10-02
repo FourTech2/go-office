@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_spaces"
-        android:name="com.example.loginfirebase.ui.dashboard.SpacesFragment"
+        android:name="com.example.loginfirebase.ui.spaces.SpacesFragment"
         android:label="@string/title_spaces"
         tools:layout="@layout/fragment_spaces" />
 
