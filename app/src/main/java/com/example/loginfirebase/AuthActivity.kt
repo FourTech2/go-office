@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 class AuthActivity : AppCompatActivity() {
     private lateinit var emailEditText : EditText
     private lateinit var passwordEditText: EditText
-    private lateinit var logInCheckBox: CheckBox
     private lateinit var authLayout: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,6 @@ class AuthActivity : AppCompatActivity() {
         title = "Autenticación"
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
-        logInCheckBox = findViewById(R.id.logInCheckBox)
         authLayout = findViewById(R.id.authLayout)
     }
 
@@ -87,7 +85,6 @@ class AuthActivity : AppCompatActivity() {
     private fun showHome(email: String){
         val homeIntent = Intent(this, HomeActivity::class.java).apply {
             putExtra("email", email)
-            putExtra("autoLogIn", logInCheckBox.isChecked)
         }
         startActivity(homeIntent)
     }

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:layout_height="match_parent"
     android:layout_marginStart="32dp"
     android:layout_marginEnd="32dp"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.spaces.SpacesFragment">
 
@@ -15,57 +13,70 @@
         android:id="@+id/textViewReserveDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/reserve_description" />
+        android:text="@string/reserve_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"/>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/date_text"
-        android:minHeight="48dp"
-        android:clickable="false"
-        android:focusable="false"/>
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewReserveDescription"
+        app:layout_constraintVertical_bias="0.2">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/date_text"
+            android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/editTextStartTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/start_hour_text"
-        android:minHeight="48dp"
-        android:clickable="false"
-        android:focusable="false"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        <EditText
+            android:id="@+id/editTextStartTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/start_hour_text"
+            android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/editTextFinalTime"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:ems="10"
-        android:hint="@string/exit_hour_text"
-        android:minHeight="48dp"
-        android:clickable="false"
-        android:focusable="false"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        <EditText
+            android:id="@+id/editTextFinalTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/exit_hour_text"
+            android:minHeight="48dp" />
 
-    <Button
-        android:id="@+id/reserveButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/reserve_text" />
-</LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/reserveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reserve_text" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

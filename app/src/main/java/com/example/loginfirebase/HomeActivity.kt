@@ -39,16 +39,12 @@ class HomeActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         val bundle = intent.extras
         val email = bundle?.getString("email")
-        val autoLogin = bundle?.getBoolean("autoLogIn")
 
         if (email != null) {
             setUp(email)
-
-            if (autoLogin == true){
-                val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-                prefs.putString("email", email)
-                prefs.apply()
-            }
+            val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+            prefs.putString("email", email)
+            prefs.apply()
         }
     }
 

@@ -37,12 +37,6 @@
         android:layout_width="match_parent"
         android:layout_height="16dp" />
 
-    <CheckBox
-        android:id="@+id/logInCheckBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/login_automatically" />
-
     <Space
         android:layout_width="match_parent"
         android:layout_height="16dp" />
