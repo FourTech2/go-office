@@ -16,4 +16,8 @@
     <string name="start_hour_text">Hora de entrada</string>
     <string name="exit_hour_text">Hora de salida</string>
     <string name="reserve_text">Reservar</string>
+    <string name="space_reserved_text">Espacio reservado</string>
+    <string name="coworker_text">Colaborador(a)</string>
+    <string name="date_CheckIn_text">Fecha</string>
+    <string name="checkIn_button">Check In</string>
 </resources>
