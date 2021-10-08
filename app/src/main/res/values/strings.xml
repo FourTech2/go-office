@@ -20,4 +20,5 @@
     <string name="coworker_text">Colaborador(a)</string>
     <string name="date_CheckIn_text">Fecha</string>
     <string name="checkIn_button">Check In</string>
+    <string name="reserve_description">Ingresa la fecha, hora de entrada y salida para reservar un espacio</string>
 </resources>

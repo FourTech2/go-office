@@ -1,4 +1,4 @@
-package com.example.loginfirebase.ui.dashboard
+package com.example.loginfirebase.ui.spaces
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
