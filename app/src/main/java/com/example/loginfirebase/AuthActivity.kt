@@ -91,4 +91,10 @@ class AuthActivity : AppCompatActivity() {
         }
         startActivity(homeIntent)
     }
+
+    //Llama a la vista de empleados
+    fun showEmployees(view: View) {
+        val employeeIntent = Intent(this, EmployeeActivity::class.java)
+        startActivity(employeeIntent)
+    }
 }
