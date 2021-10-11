@@ -9,6 +9,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/userLogEmailTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,13 +37,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/idEmpTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cédula" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/idEmpEditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
@@ -31,16 +52,16 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="16dp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/nameEmpTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombre completo" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/nameEmpEditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
@@ -49,16 +70,16 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="16dp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/emailEmpTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Correo electrónico" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/emailEmpEditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
@@ -67,10 +88,10 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="16dp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/jobEmpTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Puesto" />
@@ -86,10 +107,10 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="16dp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/departmentEmpTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Departamento" />
@@ -103,10 +124,10 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="16dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/saveEmpButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registrar" />

@@ -17,6 +17,7 @@
     <string name="exit_hour_text">Hora de salida</string>
     <string name="reserve_text">Reservar</string>
     <string name="reserve_description">Ingresa la fecha, hora de entrada y salida para reservar un espacio</string>
+    <string name="user_log_text">Usuario logueado:</string>
     <string-array name="jobs_array">
         <item>Desarrollador</item>
         <item>Analista</item>
