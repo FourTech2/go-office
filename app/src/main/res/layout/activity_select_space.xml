@@ -6,80 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".SelectSpaceActivity">
 
-    <TableLayout
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/Choose_a_free_space_to_reserve"
+        app:layout_constraintBottom_toTopOf="@id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/textView">
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/imageButtonSpace01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
                 android:background="#00FFFFFF"
                 android:rotation="180"
-                app:srcCompat="@drawable/free_space"
-                android:layout_margin="5dp"/>
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/free_space" />
 
             <ImageButton
                 android:id="@+id/imageButtonSpace02"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
                 android:background="#00FFFFFF"
-                app:srcCompat="@drawable/free_space"
-                android:layout_margin="5dp"/>
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/free_space" />
 
         </TableRow>
 
         <TableRow
             android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/imageButtonSpace03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="#00FFFFFF"
                 android:rotation="180"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/free_space" />
 
             <ImageButton
                 android:id="@+id/imageButtonSpace04"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                app:srcCompat="@drawable/free_space"
-                android:background="#00FFFFFF"/>
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/free_space" />
 
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/imageButtonSpace05"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="#00FFFFFF"
                 android:rotation="180"
-                app:srcCompat="@drawable/free_space"
-                android:layout_margin="5dp"/>
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/free_space" />
 
             <ImageButton
                 android:id="@+id/imageButtonSpace06"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/free_space"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="#00FFFFFF"
-                android:layout_margin="5dp"/>
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/free_space" />
         </TableRow>
 
     </TableLayout>
