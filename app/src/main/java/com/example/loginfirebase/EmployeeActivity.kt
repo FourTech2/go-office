@@ -7,8 +7,12 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.loginfirebase.viewmodel.FirestoreViewEmployeeModel
 
 class EmployeeActivity : AppCompatActivity() {
+    private lateinit var viewModel: FirestoreViewEmployeeModel
+
     private lateinit var userLogEmailTextView: TextView
     private lateinit var idEmpEditText: EditText
     private lateinit var nameEmpEditText: EditText
@@ -19,6 +23,8 @@ class EmployeeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employee)
+
+        viewModel = ViewModelProvider(this)[FirestoreViewEmployeeModel::class.java]
 
         //Establece los elementos de la vista
         setUp(intent.extras?.getString("email"))
@@ -62,7 +68,14 @@ class EmployeeActivity : AppCompatActivity() {
     }
 
     //Guardar empleado
-    private fun saveEmployee (view: View) {
-        //Obtener item seleccionado de jobSpinner -> jobSpinner.selectedItem.toString()
+    fun saveEmployee (view: View) {
+        viewModel.createEmployee(
+            intent.extras?.getString("email"),
+            idEmpEditText.text.toString(),
+            nameEmpEditText.text.toString(),
+            emailEmpEditText.text.toString(),
+            jobSpinner.selectedItem.toString(),
+            departmentSpinner.selectedItem.toString()
+        )
     }
 }

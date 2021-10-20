@@ -101,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue"
+            android:textColor="@color/white"
             android:minHeight="48dp"
             android:popupBackground="@color/blue"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -130,6 +131,7 @@
             android:id="@+id/saveEmpButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="saveEmployee"
             android:text="Registrar" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
