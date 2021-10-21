@@ -1,6 +1,5 @@
 package com.example.loginfirebase.data.repo
 
-import android.widget.Toast
 import com.example.loginfirebase.models.Employee
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -16,5 +15,16 @@ class FirebaseEmployeeRepo {
                     //no se pudo guardar
                 }
             }
+    }
+
+    fun getAllEmployeesData() {
+        val employeesList = mutableListOf<Employee>()
+
+        db.collection("employees").get().addOnSuccessListener { result->
+            for(document in result) {
+                val employee = document.toObject(Employee::class.java)
+                employeesList.add(employee)
+            }
+        }
     }
 }

@@ -133,5 +133,16 @@
             android:layout_height="wrap_content"
             android:onClick="saveEmployee"
             android:text="Registrar" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <Button
+            android:id="@+id/listEmpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showListEmployees"
+            android:text="Ver lista" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

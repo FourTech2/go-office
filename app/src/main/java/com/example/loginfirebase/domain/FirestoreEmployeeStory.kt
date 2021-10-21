@@ -9,4 +9,8 @@ class FirestoreEmployeeStory {
     fun setEmployeeFirestore(employee: Employee){
         repo.setEmployeeData(employee)
     }
+
+    fun getAllEmployees() {
+        repo.getAllEmployeesData()
+    }
 }

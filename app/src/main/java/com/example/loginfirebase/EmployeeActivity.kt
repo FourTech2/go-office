@@ -1,5 +1,6 @@
 package com.example.loginfirebase
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -69,13 +70,26 @@ class EmployeeActivity : AppCompatActivity() {
 
     //Guardar empleado
     fun saveEmployee (view: View) {
-        viewModel.createEmployee(
-            intent.extras?.getString("email"),
-            idEmpEditText.text.toString(),
-            nameEmpEditText.text.toString(),
-            emailEmpEditText.text.toString(),
-            jobSpinner.selectedItem.toString(),
-            departmentSpinner.selectedItem.toString()
-        )
+        if(idEmpEditText.text.toString().isNotEmpty() &&
+            nameEmpEditText.text.toString().isNotEmpty() &&
+            emailEmpEditText.text.toString().isNotEmpty()) {
+
+            viewModel.createEmployee(
+                intent.extras?.getString("email"),
+                idEmpEditText.text.toString(),
+                nameEmpEditText.text.toString(),
+                emailEmpEditText.text.toString(),
+                jobSpinner.selectedItem.toString(),
+                departmentSpinner.selectedItem.toString()
+            )
+        }
+    }
+
+    //Llama a la vista lista de empleados y envía el email del usuario logueado
+    fun showListEmployees(view: View) {
+        val employeeListIntent = Intent(this, EmployeesListActivity::class.java).apply {
+            putExtra("email", intent.extras?.getString("email"))
+        }
+        startActivity(employeeListIntent)
     }
 }

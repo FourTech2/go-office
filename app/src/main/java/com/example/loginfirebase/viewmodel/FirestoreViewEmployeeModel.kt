@@ -19,4 +19,8 @@ class FirestoreViewEmployeeModel: ViewModel() {
             firestoreEmployeeStory.setEmployeeFirestore(employee)
         }
     }
+
+    fun getAllEmployeesVM(){
+        firestoreEmployeeStory.getAllEmployees()
+    }
 }
