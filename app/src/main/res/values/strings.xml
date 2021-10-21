@@ -21,4 +21,21 @@
     <string name="date_CheckIn_text">Fecha</string>
     <string name="checkIn_button">Check In</string>
     <string name="reserve_description">Ingresa la fecha, hora de entrada y salida para reservar un espacio</string>
+    <string name="user_log_text">Usuario logueado:</string>
+    <string-array name="jobs_array">
+        <item>Desarrollador</item>
+        <item>Analista</item>
+        <item>Diseñador</item>
+        <item>Soporte</item>
+        <item>Calidad</item>
+        <item>Documentación</item>
+    </string-array>
+    <string-array name="departments_array">
+        <item>TIC</item>
+        <item>Sistemas</item>
+        <item>Centro de atención</item>
+        <item>Negocio</item>
+        <item>Control</item>
+        <item>Comunicaciones</item>
+    </string-array>
 </resources>
