@@ -1,6 +1,7 @@
 package com.example.loginfirebase
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -59,5 +60,13 @@ class HomeActivity : AppCompatActivity() {
         prefs.apply()
         FirebaseAuth.getInstance().signOut()
         onBackPressed()
+    }
+
+    //Llama a la vista de empleados y envía el email del usuario logueado
+    fun showEmployees(view: View) {
+        val employeeIntent = Intent(this, EmployeeActivity::class.java).apply {
+            putExtra("email", intent.extras?.getString("email"))
+        }
+        startActivity(employeeIntent)
     }
 }

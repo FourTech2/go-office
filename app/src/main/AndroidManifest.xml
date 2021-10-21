@@ -11,6 +11,12 @@
         android:theme="@style/Theme.LoginFirebase">
         <activity
             android:name=".SelectSpaceActivity"
+			android:exported="true"/>
+		<activity
+            android:name=".EmployeesListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EmployeeActivity"
             android:exported="true" />
         <activity
             android:name=".HomeActivity"
