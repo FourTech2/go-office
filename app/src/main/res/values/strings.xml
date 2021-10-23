@@ -19,6 +19,7 @@
     <string name="reserve_description">Ingresa la fecha, hora de entrada y salida para reservar un espacio</string>
     <string name="user_log_text">Usuario logueado:</string>
     <string-array name="jobs_array">
+        <item>Seleccione un puesto</item>
         <item>Desarrollador</item>
         <item>Analista</item>
         <item>Diseñador</item>
@@ -27,6 +28,7 @@
         <item>Documentación</item>
     </string-array>
     <string-array name="departments_array">
+        <item>Seleccione un departamento</item>
         <item>TIC</item>
         <item>Sistemas</item>
         <item>Centro de atención</item>
