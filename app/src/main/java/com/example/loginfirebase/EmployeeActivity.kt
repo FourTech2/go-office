@@ -1,12 +1,20 @@
 package com.example.loginfirebase
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.basgeekball.awesomevalidation.AwesomeValidation
+import com.basgeekball.awesomevalidation.ValidationStyle
+import com.basgeekball.awesomevalidation.utility.RegexTemplate
 import com.example.loginfirebase.viewmodel.FirestoreViewEmployeeModel
+import android.widget.Spinner
+
+import android.widget.TextView
+
 
 class EmployeeActivity : AppCompatActivity() {
     private lateinit var viewModel: FirestoreViewEmployeeModel
@@ -17,6 +25,7 @@ class EmployeeActivity : AppCompatActivity() {
     private lateinit var emailEmpEditText: EditText
     private lateinit var jobSpinner: Spinner
     private lateinit var departmentSpinner: Spinner
+    private var validation = AwesomeValidation(ValidationStyle.BASIC)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +37,7 @@ class EmployeeActivity : AppCompatActivity() {
         setUp(intent.extras?.getString("email"))
         //Carga al spinner con los elementos del string_array
         loadSpinnersData()
+        formValidation()
     }
 
     private fun setUp(email: String?) {
@@ -43,6 +53,37 @@ class EmployeeActivity : AppCompatActivity() {
         emailEmpEditText = findViewById(R.id.emailEmpEditText)
         jobSpinner = findViewById(R.id.jobSpinner)
         departmentSpinner = findViewById(R.id.departmentSpinner)
+    }
+
+    //Validaciones
+    private fun formValidation() {
+        //"^.*@*.\\\\..*\$"
+        validation.addValidation(this, R.id.idEmpEditText,
+            "^[1-9]+\\s\\d\\d\\d\\d\\s\\d\\d\\d\\d\$", R.string.invalid_id)
+        validation.addValidation(this, R.id.nameEmpEditText,
+            RegexTemplate.NOT_EMPTY, R.string.invalid_name)
+        validation.addValidation(this, R.id.emailEmpEditText,
+            "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*\$", R.string.invalid_email)
+        validateSpinner(R.id.jobSpinner, R.string.invalid_job_spinner)
+        validateSpinner(R.id.departmentSpinner, R.string.invalid_department_spinner)
+    }
+
+    //Validación de spinners
+    private fun validateSpinner(formSpinner: Int, invalidSpinner: Int) {
+        validation.addValidation(this, formSpinner,
+            { validationHolder ->
+                (validationHolder.view as Spinner).selectedItemPosition != 0
+            },
+            { validationHolder ->
+                val textViewError = (validationHolder.view as Spinner).selectedView as TextView
+                textViewError.error = validationHolder.errMsg
+                textViewError.setTextColor(Color.RED)
+            }, { validationHolder ->
+                val textViewError = (validationHolder.view as Spinner).selectedView as TextView
+                textViewError.error = null
+                textViewError.setTextColor(Color.BLACK)
+            }, invalidSpinner
+        )
     }
 
     //Se obtienen los arrays de strings.xml
@@ -71,31 +112,20 @@ class EmployeeActivity : AppCompatActivity() {
 
     //Guardar empleado
     fun saveEmployee (view: View) {
-        if(idEmpEditText.text.toString().isNotEmpty() &&
-            nameEmpEditText.text.toString().isNotEmpty() &&
-            emailEmpEditText.text.toString().isNotEmpty() &&
-            jobSpinner.selectedItemPosition != 0 &&
-            departmentSpinner.selectedItemPosition != 0) {
+        if(validation.validate()) {
 
-            viewModel.createEmployee(
-                intent.extras?.getString("email"),
-                idEmpEditText.text.toString(),
-                nameEmpEditText.text.toString(),
-                emailEmpEditText.text.toString(),
-                jobSpinner.selectedItem.toString(),
-                departmentSpinner.selectedItem.toString()
-            )
-            //Toast.makeText(applicationContext,"GUARDADO",Toast.LENGTH_LONG).show()
+//            viewModel.createEmployee(
+//                intent.extras?.getString("email"),
+//                idEmpEditText.text.toString(),
+//                nameEmpEditText.text.toString(),
+//                emailEmpEditText.text.toString(),
+//                jobSpinner.selectedItem.toString(),
+//                departmentSpinner.selectedItem.toString()
+//            )
+            Toast.makeText(applicationContext,"GUARDADO",Toast.LENGTH_LONG).show()
         } else {
-            if(idEmpEditText.text.toString().isEmpty()) {
-                idEmpEditText.error = "Ingrese la cédula del empleado"
-            }
-            if(nameEmpEditText.text.toString().isEmpty()) {
-                nameEmpEditText.error = "Ingrese el nombre del empleado"
-            }
-            if(emailEmpEditText.text.toString().isEmpty()) {
-                emailEmpEditText.error = "Ingrese el email del empleado"
-            }
+
+            Toast.makeText(applicationContext,"NO GUARDA",Toast.LENGTH_LONG).show()
         }
     }
 

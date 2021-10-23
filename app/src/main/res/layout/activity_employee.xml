@@ -84,7 +84,7 @@
             android:layout_height="48dp"
             android:ems="10"
             android:hint="empleado@email.com"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
 
         <Space
             android:layout_width="match_parent"

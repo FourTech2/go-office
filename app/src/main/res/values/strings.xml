@@ -18,6 +18,11 @@
     <string name="reserve_text">Reservar</string>
     <string name="reserve_description">Ingresa la fecha, hora de entrada y salida para reservar un espacio</string>
     <string name="user_log_text">Usuario logueado:</string>
+    <string name="invalid_id">Ingrese un número de cédula valido</string>
+    <string name="invalid_name">Ingrese el nombre del empleado</string>
+    <string name="invalid_email">Ingrese un email válido</string>
+    <string name="invalid_job_spinner">Seleccione un puesto</string>
+    <string name="invalid_department_spinner">Seleccione un departamento</string>
     <string-array name="jobs_array">
         <item>Seleccione un puesto</item>
         <item>Desarrollador</item>
