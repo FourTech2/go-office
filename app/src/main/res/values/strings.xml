@@ -20,6 +20,7 @@
     <string name="Choose_a_free_space_to_reserve">Seleccione el espacio libre a reservar</string>
     <string name="user_log_text">Usuario logueado:</string>
     <string-array name="jobs_array">
+        <item>Seleccione un puesto</item>
         <item>Desarrollador</item>
         <item>Analista</item>
         <item>Diseñador</item>
@@ -28,6 +29,7 @@
         <item>Documentación</item>
     </string-array>
     <string-array name="departments_array">
+        <item>Seleccione un departamento</item>
         <item>TIC</item>
         <item>Sistemas</item>
         <item>Centro de atención</item>

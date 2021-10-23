@@ -3,10 +3,7 @@ package com.example.loginfirebase
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.loginfirebase.viewmodel.FirestoreViewEmployeeModel
@@ -58,21 +55,27 @@ class EmployeeActivity : AppCompatActivity() {
     }
 
     //Se cargan los spinners con los arrays
-    private fun confSpinnerAdapter(kindOfList: String): ArrayAdapter<String> {
-        return ArrayAdapter(this, android.R.layout.simple_spinner_item, selectList(kindOfList))
+    private fun confSpinnerAdapter(kindOfList: String): ArrayAdapter<Any?> {
+        val arrayAdapter: ArrayAdapter<Any?> = ArrayAdapter<Any?>(this, R.layout.spinner_style_employee, selectList(kindOfList))
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_style_employee)
+        return arrayAdapter
     }
 
-    //Carga al spinner con los elementos del string_array
+    //Carga al spinner con los elementos del string_array y lo configura
     private fun loadSpinnersData() {
         jobSpinner.adapter = confSpinnerAdapter("jobs")
         departmentSpinner.adapter = confSpinnerAdapter("departments")
     }
 
+
+
     //Guardar empleado
     fun saveEmployee (view: View) {
         if(idEmpEditText.text.toString().isNotEmpty() &&
             nameEmpEditText.text.toString().isNotEmpty() &&
-            emailEmpEditText.text.toString().isNotEmpty()) {
+            emailEmpEditText.text.toString().isNotEmpty() &&
+            jobSpinner.selectedItemPosition != 0 &&
+            departmentSpinner.selectedItemPosition != 0) {
 
             viewModel.createEmployee(
                 intent.extras?.getString("email"),
@@ -82,6 +85,17 @@ class EmployeeActivity : AppCompatActivity() {
                 jobSpinner.selectedItem.toString(),
                 departmentSpinner.selectedItem.toString()
             )
+            //Toast.makeText(applicationContext,"GUARDADO",Toast.LENGTH_LONG).show()
+        } else {
+            if(idEmpEditText.text.toString().isEmpty()) {
+                idEmpEditText.error = "Ingrese la cédula del empleado"
+            }
+            if(nameEmpEditText.text.toString().isEmpty()) {
+                nameEmpEditText.error = "Ingrese el nombre del empleado"
+            }
+            if(emailEmpEditText.text.toString().isEmpty()) {
+                emailEmpEditText.error = "Ingrese el email del empleado"
+            }
         }
     }
 
