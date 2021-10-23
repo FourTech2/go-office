@@ -4,50 +4,37 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.activity.viewModels
+import com.example.loginfirebase.databinding.ActivitySelectSpaceBinding
 import com.example.loginfirebase.enums.SpaceState
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.loginfirebase.models.Space
+import com.example.loginfirebase.viewmodel.SpaceViewModel
 
 class SelectSpaceActivity : AppCompatActivity() {
-    private val db = FirebaseFirestore.getInstance()
+    private lateinit var binding: ActivitySelectSpaceBinding
+    private val spaceViewModel: SpaceViewModel by viewModels()
     private lateinit var imageButtons: Map<String, ImageButton>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_select_space)
+        binding = ActivitySelectSpaceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setUp()
-        db.collection("spaces").get().addOnSuccessListener { spaces ->
-            for (space in spaces) {
-                var image: Int
-
-                when (SpaceState.valueOf(space.data["state"].toString())) {
-                    SpaceState.Available -> {
-                        image = R.drawable.free_space
-                        imageButtons[space.id]?.setOnClickListener{selectFreeSpace(imageButtons[space.id])}
-                    }
-                    SpaceState.Busy -> {
-                        image = R.drawable.block_space
-                        imageButtons[space.id]?.setOnClickListener{selectOccupiedSpace(imageButtons[space.id])}
-                    }
-                    SpaceState.Reserved -> {
-                        image = R.drawable.reserved_space
-                        imageButtons[space.id]?.setOnClickListener{selectReservedSpace(imageButtons[space.id])}
-                    }
-                }
-
-                imageButtons[space.id]?.setImageResource(image)
-            }
-        }
+        spaceViewModel.getSpaceList()
+        spaceViewModel.spaceList.observe(this, {
+            loadSpaces(it)
+        })
     }
 
     private fun setUp() {
-        title = "Espacio a reservar"
+        title = getString(R.string.space_to_reserve)
         imageButtons = mutableMapOf(
-            "01" to (findViewById(R.id.imageButtonSpace01)),
-            "02" to (findViewById(R.id.imageButtonSpace02)),
-            "03" to (findViewById(R.id.imageButtonSpace03)),
-            "04" to (findViewById(R.id.imageButtonSpace04)),
-            "05" to (findViewById(R.id.imageButtonSpace05)),
-            "06" to (findViewById(R.id.imageButtonSpace06))
+            "01" to (binding.imageButtonSpace01),
+            "02" to (binding.imageButtonSpace02),
+            "03" to (binding.imageButtonSpace03),
+            "04" to (binding.imageButtonSpace04),
+            "05" to (binding.imageButtonSpace05),
+            "06" to (binding.imageButtonSpace06)
         )
     }
 
@@ -61,5 +48,28 @@ class SelectSpaceActivity : AppCompatActivity() {
 
     private fun selectReservedSpace(space: ImageButton?){
         Toast.makeText(this, "Espacio reservado", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun loadSpaces(spaceList: MutableList<Space>){
+        for (space in spaceList){
+            var image: Int
+
+            when (space.state) {
+                SpaceState.Available -> {
+                    image = R.drawable.free_space
+                    imageButtons[space.id]?.setOnClickListener{selectFreeSpace(imageButtons[space.id])}
+                }
+                SpaceState.Busy -> {
+                    image = R.drawable.block_space
+                    imageButtons[space.id]?.setOnClickListener{selectOccupiedSpace(imageButtons[space.id])}
+                }
+                SpaceState.Reserved -> {
+                    image = R.drawable.reserved_space
+                    imageButtons[space.id]?.setOnClickListener{selectReservedSpace(imageButtons[space.id])}
+                }
+            }
+
+            imageButtons[space.id]?.setImageResource(image)
+        }
     }
 }

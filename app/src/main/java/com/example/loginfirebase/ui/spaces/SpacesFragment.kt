@@ -35,9 +35,8 @@ class SpacesFragment : Fragment() {
             ViewModelProvider(this).get(SpacesViewModel::class.java)
 
         _binding = FragmentSpacesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
         setUp()
-        return root
+        return binding.root
     }
 
     private fun setUp() {

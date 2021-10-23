@@ -9,30 +9,26 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
+import com.example.loginfirebase.databinding.ActivityAuthBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class AuthActivity : AppCompatActivity() {
-    private lateinit var emailEditText : EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var authLayout: LinearLayout
-
+    private lateinit var binding: ActivityAuthBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setUp()
         session()
     }
 
     private fun setUp(){
         title = "Autenticación"
-        emailEditText = findViewById(R.id.emailEditText)
-        passwordEditText = findViewById(R.id.passwordEditText)
-        authLayout = findViewById(R.id.authLayout)
     }
 
     override fun onStart() {
         super.onStart()
-        authLayout.visibility = View.VISIBLE
+        binding.authLayout.visibility = View.VISIBLE
     }
 
     private fun session(){
@@ -40,14 +36,14 @@ class AuthActivity : AppCompatActivity() {
         val email = prefs.getString("email", null)
 
         if (email != null){
-            authLayout.visibility = View.INVISIBLE
+            binding.authLayout.visibility = View.INVISIBLE
             showHome(email)
         }
     }
 
     fun singUp(view: View){
-        if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
+        if (binding.emailEditText.text.isNotEmpty() && binding.passwordEditText.text.isNotEmpty()){
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString())
                 .addOnCompleteListener{
                     if (it.isSuccessful){
                         showHome(it.result?.user?.email ?: "")
@@ -58,8 +54,8 @@ class AuthActivity : AppCompatActivity() {
         }
     }
     fun logIn(view: View){
-        if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
-            FirebaseAuth.getInstance().signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
+        if (binding.emailEditText.text.isNotEmpty() && binding.passwordEditText.text.isNotEmpty()){
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString())
                 .addOnCompleteListener{
                     if (it.isSuccessful){
                         showHome(it.result?.user?.email ?: "")
