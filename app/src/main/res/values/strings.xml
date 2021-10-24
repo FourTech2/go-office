@@ -38,4 +38,5 @@
         <item>Comunicaciones</item>
     </string-array>
     <string name="space_to_reserve">Espacio a reservar</string>
+    <string name="Employees">Empleados</string>
 </resources>

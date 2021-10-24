@@ -17,8 +17,6 @@ import com.google.firebase.auth.FirebaseAuth
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var currentEmailTextView: TextView
-    private lateinit var currentAutoLoginTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,31 +40,9 @@ class HomeActivity : AppCompatActivity() {
         val email = bundle?.getString("email")
 
         if (email != null) {
-            setUp(email)
             val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
             prefs.putString("email", email)
             prefs.apply()
         }
-    }
-
-    private fun setUp(email: String){
-        currentEmailTextView = findViewById((R.id.currentEmailTextView))
-        currentEmailTextView.text = email
-    }
-
-    fun logOut(view: View){
-        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-        prefs.clear()
-        prefs.apply()
-        FirebaseAuth.getInstance().signOut()
-        onBackPressed()
-    }
-
-    //Llama a la vista de empleados y envía el email del usuario logueado
-    fun showEmployees(view: View) {
-        val employeeIntent = Intent(this, EmployeeActivity::class.java).apply {
-            putExtra("email", intent.extras?.getString("email"))
-        }
-        startActivity(employeeIntent)
     }
 }
